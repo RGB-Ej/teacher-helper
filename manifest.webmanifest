@@ -1,7 +1,7 @@
 {
   "name": "Teacher Helper",
   "short_name": "Teacher Helper",
-  "description": "Track hourly English lessons: students, schedule, hours, earnings and payments.",
+  "description": "Track hourly English lessons: private and group lessons, attendance, payments, exam and quiz grades.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

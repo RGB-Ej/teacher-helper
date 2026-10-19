@@ -6,19 +6,19 @@ No sign-up, no server, no database — it runs entirely in the browser and works
 
 ## Features
 
-- **Students** — name, hourly rate, phone, colour, notes, active/inactive.
-- **Automatic calculation** — every lesson = hours × the student's hourly rate. Changing a student's rate later does not change past lessons.
-- **Weekly schedule** — 7-day calendar, add lessons from any day, repeat weekly (up to 24 weeks), overlap warning.
-- **Lesson status** — Scheduled → Done / Cancelled, plus Paid / Unpaid.
-- **Dashboard & analytics**
-  - Earned, hours taught, average hourly rate, collected, outstanding, next 7 days' value
-  - Earnings & hours chart for the last 12 months
-  - Hours by student (doughnut chart)
-  - Period filter: this month, last month, last 3 months, this year, all time
-  - "Lessons to confirm" — past lessons you haven't marked done yet
-- **Billing** — outstanding balance per student with one-click "Record payment", plus a filterable lesson ledger (student, status, paid, month).
-- **Data** — export/import JSON backup, export lessons to CSV (opens in Excel), sample data to try the app.
-- Light & dark mode, mobile-friendly, installable on your phone's home screen with its own icon.
+- **Students** — name, private hourly rate, level, phone, parent phone, colour, notes, active/inactive.
+- **Groups** — put several students in a group (e.g. "Grade 6 — Group A") with an optional per-student group rate.
+- **Private & group lessons** — one lesson can have one or many students. Each student in a lesson has their own rate, **attendance** (present/absent) and **payment** (paid/unpaid). Absent students are not charged.
+- **Weekly schedule** — 7-day calendar, repeat weekly (up to 24 weeks), overlap warning.
+- **Exams & quizzes tracker** — enter scores for a whole group at once or for individual students; see class average, highest and lowest.
+- **Dashboards**
+  - **Main dashboard** — earnings, hours, collected, outstanding, next 7 days, average grade, 12-month chart, recent grades, groups summary.
+  - **All-students dashboard** — attendance, average grade, last grade and balance for every student, grade chart and a "needs attention" list.
+  - **Student dashboard** — grade-progress chart vs. class average, every exam & quiz, every lesson with attendance and payment.
+  - **Group dashboard** — class average per exam/quiz chart, member table (attendance, grades, balance), upcoming lessons.
+- **Billing** — outstanding per student with one-click "Record payment", plus a ledger of every student in every lesson with filters.
+- **Data** — JSON backup/restore, CSV export of lessons & payments and of grades (opens in Excel), sample data. Older backups are upgraded automatically.
+- Light & dark mode, mobile-friendly, installable on your phone's home screen.
 
 ## Run locally
 
@@ -53,8 +53,8 @@ All data is stored in your browser's `localStorage` on the device you use. It is
 index.html   – page shell
 styles.css   – styles (light/dark, responsive)
 app.js       – all app logic (no build step)
-icon.svg, icon-192.png, icon-512.png, apple-touch-icon.png – app icon
-manifest.webmanifest – lets you install it on your phone's home screen
+icon.svg, icon-*.png, apple-touch-icon.png – app icon
+manifest.webmanifest – install on phone home screen
 ```
 
 Charts use [Chart.js](https://www.chartjs.org/) from cdnjs.
@@ -64,9 +64,10 @@ Charts use [Chart.js](https://www.chartjs.org/) from cdnjs.
 ## بالعربي
 
 **Teacher Helper** برنامج ويب لمدرس الإنجليزي اللي بيشتغل بالساعة:
-- تضيف الطلاب وسعر الساعة لكل طالب، والبرنامج يحسب فلوس كل حصة تلقائيًا (عدد الساعات × السعر).
-- جدول أسبوعي للحصص مع تكرار أسبوعي وتنبيه لو حصتين متداخلين.
-- داشبورد فيها الساعات والفلوس المكسوبة والمحصّلة والمتأخرة على كل طالب، ورسوم بيانية لآخر 12 شهر.
+- تضيف الطلاب وسعر الساعة لكل طالب، وتعمل **جروبات** وتحط فيها الطلاب.
+- الحصة ممكن يكون فيها **طالب واحد أو أكتر**، وكل طالب ليه سعره و**حضوره** و**دفعه** لوحده، والغايب ما بيتحسبش عليه.
+- **متابعة الطلاب:** تسجل درجات الامتحانات والكويزات للجروب كله مرة واحدة أو لطالب لوحده.
+- **داشبورد عام** و**داشبورد لكل الطلاب** و**داشبورد لكل طالب** و**داشبورد لكل جروب** فيها الحضور والدرجات والفلوس.
 - صفحة Billing تشوف منها مين عليه فلوس وتسجل الدفع بضغطة.
 - البيانات بتتحفظ على جهازك بس، وتقدر تعمل Backup وتصدّر Excel.
 
