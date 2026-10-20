@@ -147,19 +147,19 @@ label { display: block; font-size: .82rem; font-weight: 600; color: var(--muted)
 .list { display: flex; flex-direction: column; gap: 8px; }
 .srow {
   display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
-  padding: 10px 12px; border: 1px solid var(--border); border-left: 4px solid var(--c); border-radius: 10px;
+  padding: 10px 12px; border: 1px solid var(--border); border-inline-start: 4px solid var(--c); border-radius: 10px;
   background: var(--surface);
 }
 .srow-main span { display: block; color: var(--muted); font-size: .82rem; }
 .srow-side { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-.amt { font-weight: 600; margin-right: 4px; }
+.amt { font-weight: 600; margin-inline-end: 4px; }
 .badge { font-size: .72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
 .badge.done { background: var(--good-soft); color: var(--good); }
 .badge.scheduled { background: var(--accent-soft); color: var(--accent); }
 .badge.cancelled { background: var(--surface-2); color: var(--muted); text-decoration: line-through; }
 .badge.paid { background: var(--good-soft); color: var(--good); }
 .badge.unpaid { background: var(--warn-soft); color: var(--warn); }
-.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-right: 6px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-inline-end: 6px; }
 .empty-note { color: var(--muted); font-size: .9rem; padding: 12px 0; }
 
 /* ---------- Week grid ---------- */
@@ -170,7 +170,7 @@ label { display: block; font-size: .82rem; font-weight: 600; color: var(--muted)
 .day-head b { font-size: 1.2rem; }
 .day-head span { color: var(--muted); font-size: .8rem; font-weight: 600; text-transform: uppercase; }
 .lesson {
-  text-align: left; border: 0; border-left: 3px solid var(--c); border-radius: 8px; padding: 6px 8px; cursor: pointer;
+  text-align: start; border: 0; border-inline-start: 3px solid var(--c); border-radius: 8px; padding: 6px 8px; cursor: pointer;
   background: color-mix(in srgb, var(--c) 12%, var(--surface));
 }
 .lesson .t { font-size: .75rem; color: var(--muted); }
@@ -198,9 +198,9 @@ label { display: block; font-size: .82rem; font-weight: 600; color: var(--muted)
 /* ---------- Table ---------- */
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: .88rem; }
-th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th, td { text-align: start; padding: 9px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
 th { color: var(--muted); font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; }
-td.num, th.num { text-align: right; }
+td.num, th.num { text-align: end; }
 tfoot td { font-weight: 700; border-bottom: 0; }
 
 /* ---------- Welcome ---------- */
@@ -267,7 +267,7 @@ dialog::backdrop { background: rgba(10, 12, 25, .55); }
   color: var(--muted); font-size: .85rem; cursor: pointer;
 }
 .back:hover { color: var(--accent); }
-.dot.big { width: 14px; height: 14px; margin-right: 10px; vertical-align: middle; }
+.dot.big { width: 14px; height: 14px; margin-inline-end: 10px; vertical-align: middle; }
 .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .pill {
   display: inline-flex; align-items: center; border: 1px solid var(--border); background: var(--surface);
@@ -295,10 +295,10 @@ dialog.wide { width: min(620px, calc(100vw - 32px)); }
 }
 .att-row, .score-row {
   display: grid; grid-template-columns: 1fr 96px auto auto; gap: 10px; align-items: center;
-  padding: 5px 8px; border-radius: 8px; border-left: 3px solid transparent;
+  padding: 5px 8px; border-radius: 8px; border-inline-start: 3px solid transparent;
 }
-.score-row { grid-template-columns: 1fr 110px; border-left-color: var(--c); }
-.att-row.on { background: var(--surface-2); border-left-color: var(--c); }
+.score-row { grid-template-columns: 1fr 110px; border-inline-start-color: var(--c); }
+.att-row.on { background: var(--surface-2); border-inline-start-color: var(--c); }
 .att-row input[type="number"], .score-row input[type="number"] { padding: 6px 8px; }
 .att-row:not(.on) [data-rate], .att-row:not(.on) .mini { visibility: hidden; }
 .att-list.not-done .mini { display: none; }
@@ -315,8 +315,69 @@ label.mini { font-size: .78rem; font-weight: 500; white-space: nowrap; }
 
 @media (max-width: 700px) {
   .att-row { grid-template-columns: 1fr 84px; }
-  .att-row .mini { padding-left: 26px; }
+  .att-row .mini { padding-inline-start: 26px; }
   .details { grid-template-columns: 1fr; gap: 2px; }
   .details dd { margin-bottom: 8px; }
 }
 .grid.two { align-items: start; }
+
+/* ---------- v2.1: tab icons + bottom navigation on phones ---------- */
+.tabs button { display: inline-flex; align-items: center; gap: 6px; }
+.tabs svg {
+  width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.tabs .short { display: none; }
+
+@media (max-width: 700px) {
+  .topbar { position: sticky; }
+  .tabs {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    border-radius: 0; overflow: visible;
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 16px rgba(16, 24, 40, .06);
+  }
+  .tabs button {
+    flex-direction: column; gap: 3px; padding: 6px 0 4px; border-radius: 10px;
+    font-size: .64rem; font-weight: 600; min-width: 0; min-height: 50px; justify-content: center;
+  }
+  .tabs svg { width: 22px; height: 22px; }
+  .tabs .lbl { display: none; }
+  .tabs .short { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tabs button.active { background: transparent; box-shadow: none; color: var(--accent); }
+  .tabs button.active svg { stroke-width: 2.4; }
+  .tabs button.active::before {
+    content: ""; position: absolute; top: 0; width: 28px; height: 3px; border-radius: 0 0 3px 3px; background: var(--accent);
+  }
+  .tabs button { position: relative; }
+  main { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  #toast { bottom: calc(84px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 700px) {
+  /* backdrop-filter on the header would trap the fixed tab bar inside it */
+  .topbar { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--surface); }
+}
+
+/* ---------- v2.2: Arabic / RTL + bilingual inputs ---------- */
+html[lang="ar"] body, html[lang="ar"] button, html[lang="ar"] input, html[lang="ar"] select, html[lang="ar"] textarea {
+  font-family: Cairo, Inter, system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+}
+html[lang="ar"] th { letter-spacing: 0; text-transform: none; font-size: .8rem; }
+html[lang="ar"] .kpi .value, html[lang="ar"] .amt, html[lang="ar"] td.num { font-feature-settings: "tnum"; }
+html[dir="rtl"] select { background-position: left 10px center; }
+input[data-num] { text-align: start; font-variant-numeric: tabular-nums; }
+html[dir="rtl"] input[data-num], html[dir="rtl"] input[type="tel"] { direction: ltr; text-align: right; }
+.att-row input[data-num], .score-row input[data-num] { padding: 6px 8px; }
+textarea[dir="auto"], input[dir="auto"] { text-align: start; unicode-bidi: plaintext; }
+/* language switch */
+.seg { display: inline-flex; background: var(--surface-2); border-radius: 10px; padding: 3px; gap: 3px; }
+.seg label { margin: 0; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; padding: 6px 16px; border-radius: 8px; font-weight: 600; color: var(--muted); font-size: .9rem; }
+.seg input:checked + span { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); }
+.welcome .row + .row { margin-top: 12px; }

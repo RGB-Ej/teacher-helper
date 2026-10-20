@@ -18,7 +18,8 @@ No sign-up, no server, no database — it runs entirely in the browser and works
   - **Group dashboard** — class average per exam/quiz chart, member table (attendance, grades, balance), upcoming lessons.
 - **Billing** — outstanding per student with one-click "Record payment", plus a ledger of every student in every lesson with filters.
 - **Data** — JSON backup/restore, CSV export of lessons & payments and of grades (opens in Excel), sample data. Older backups are upgraded automatically.
-- Light & dark mode, mobile-friendly, installable on your phone's home screen.
+- **Arabic & English** — switch the whole app between English and Arabic (right-to-left) in Settings. Names and notes can be typed in either language, and number fields accept Arabic digits (٠١٢٣).
+- Light & dark mode, mobile-friendly with a bottom tab bar, installable on your phone's home screen.
 
 ## Run locally
 
@@ -53,6 +54,7 @@ All data is stored in your browser's `localStorage` on the device you use. It is
 index.html   – page shell
 styles.css   – styles (light/dark, responsive)
 app.js       – all app logic (no build step)
+i18n.js      – Arabic translations
 icon.svg, icon-*.png, apple-touch-icon.png – app icon
 manifest.webmanifest – install on phone home screen
 ```
@@ -69,6 +71,7 @@ Charts use [Chart.js](https://www.chartjs.org/) from cdnjs.
 - **متابعة الطلاب:** تسجل درجات الامتحانات والكويزات للجروب كله مرة واحدة أو لطالب لوحده.
 - **داشبورد عام** و**داشبورد لكل الطلاب** و**داشبورد لكل طالب** و**داشبورد لكل جروب** فيها الحضور والدرجات والفلوس.
 - صفحة Billing تشوف منها مين عليه فلوس وتسجل الدفع بضغطة.
+- **عربي وإنجليزي:** تقدر تغيّر لغة البرنامج كله من الإعدادات، وتكتب الأسماء والملاحظات بأي لغة، وخانات الأرقام بتقبل الأرقام العربي.
 - البيانات بتتحفظ على جهازك بس، وتقدر تعمل Backup وتصدّر Excel.
 
 **النشر على GitHub:** ارفع الملفات على repo جديد ← Settings ← Pages ← اختار branch `main` وفولدر `/ (root)` ← Save، وبعد دقيقة الموقع هيشتغل على `username.github.io/teacher-helper`.
